@@ -79,7 +79,7 @@ bio.skills.display = function () {
 		formattedSkill = HTMLskills.replace("%data%", bio.skills[6]);
 		$("#skills").append(formattedSkill);
 	}
-}
+};
 
 bio.skills.display();
 
@@ -91,8 +91,9 @@ var work = {
 				"title": "eServices Specialist",
 				"location": "4400 Central Way Pocatello ID, US 83202",
 				"dates": "April 2014 - Present",
-				"description": "Solving financial concerns by actively listening to inquiries then providing services and solutions addressing needs\
-				while simultaneously creating value for both Idaho Central Credit Union and its members.\
+        /*jshint multistr: true */
+				"description": "Solving financial concerns by actively listening to inquiries then providing services and solutions addressing needs \
+				while simultaneously creating value for both Idaho Central Credit Union and its members. \
 				<br> Increasing productivity and efficiency by using advanced features of Microsoft Suite doubling daily completed tasks.\
 				<br>Writing correspondence with credit union members via email and real time messaging on a daily basis both in an accurate and timely manner.",
 				"url": "https://www.iccu.com"
@@ -120,6 +121,8 @@ var work = {
 		]
 	};
 work.display = function() {
+    var job;
+  	
 		for (job in work.jobs) {
 		// create new div for work experience
 		$("#workExperience").append(HTMLworkStart);
@@ -136,7 +139,7 @@ work.display = function() {
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 		$(".work-entry:last").append(formattedDescription);
 	}
-}
+};
 
 work.display();
 
@@ -178,6 +181,7 @@ projects.display = function() {
 		$(".project-entry:last").append(formattedDescription);
 
 		if (projects.projects[project].images.length > 0) {
+      var image;
 			for (image in projects.projects[project].images) {
 				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
 				$(".project-entry:last").append(formattedImage);
@@ -192,7 +196,6 @@ var education = {
 	"schools": [
 		{
 			"name": "Udacity",
-			"location": "",
 			"majors": ["Front-end Development"],
 			"degree": "Nanodegree",
 			"dates": "2015-2016",
@@ -271,6 +274,7 @@ var education = {
 };
 
 education.display = ( function() {
+  	var school;
 		for (school in education.schools) {
 		// create new div for school history
 		$("#education").append(HTMLschoolStart);
@@ -291,6 +295,7 @@ education.display = ( function() {
 education.display ();
 
 education.displayOnline = function() {
+  var course;
 		$("#education").append(HTMLonlineClasses);
 		for (course in education.onlineCourses) {
 		// create new div for school history
@@ -305,7 +310,7 @@ education.displayOnline = function() {
 		var formattedHTMLonlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url).replace("#", education.onlineCourses[course].url);
 		$(".education-entry:last").append(formattedHTMLonlineURL);		
 	}
-}
+};
 
 education.displayOnline();
 
