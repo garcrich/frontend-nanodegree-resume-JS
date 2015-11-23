@@ -164,7 +164,8 @@ var projects = {
 projects.display = function() {
 
     for (var project in projects.projects) {
-        if (projects.projects[project].length > 0) {
+        if (projects.projects.length > 0) {
+
             $("#projects").append(HTMLprojectStart);
 
             var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title).replace("#", projects.projects[project].url);
