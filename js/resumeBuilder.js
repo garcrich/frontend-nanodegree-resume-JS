@@ -202,7 +202,7 @@ var education = {
             "url": "https://www.udacity.com"
         }, {
             "name": "Idaho State University",
-            "location": " 921 S 8th Ave, Pocatello, ID 83201",
+            "location": "921 S 8th Ave, Pocatello, ID 83201",
             "degree": "Bachelors",
             "majors": ["Economics"],
             "city": "Pocatello ID, US",
@@ -254,9 +254,10 @@ var education = {
     }]
 };
 
-education.display  = function() {
+education.display = function() {
 
     for (var school in education.schools) {
+
         if (education.schools.length > 0) {
             // create new div for school history
             $("#education").append(HTMLschoolStart);
@@ -271,27 +272,31 @@ education.display  = function() {
             $(".education-entry:last").append(formattedHTMLschoolLocation);
             var formattedHTMLschoolMajor = HTMLschoolMajor.replace(data, education.schools[school].majors);
             $(".education-entry:last").append(formattedHTMLschoolMajor);
-
-            $("#education").append(HTMLonlineClasses);
-            for (var course in education.onlineCourses) {
-                if (education.onlineCourses.length > 0) {
-                    // create new div for school history
-                    $("#education").append(HTMLschoolStart);
-                    // concat employer and title
-                    var formattedHTMLonlineTitle = HTMLonlineTitle.replace(data, education.onlineCourses[course].title).replace("#", education.onlineCourses[course].url);
-                    var formattedHTMLonlineSchool = HTMLonlineSchool.replace(data, education.onlineCourses[course].school);
-                    var formattedTitleAndSchool = formattedHTMLonlineTitle.concat(formattedHTMLonlineSchool);
-                    $(".education-entry:last").prepend(formattedTitleAndSchool);
-                    var formattedHTMLonlineDates = HTMLonlineDates.replace(data, education.onlineCourses[course].dates);
-                    $(".education-entry:last").append(formattedHTMLonlineDates);
-                    var formattedHTMLonlineURL = HTMLonlineURL.replace(data, education.onlineCourses[course].url).replace("#", education.onlineCourses[course].url);
-                    $(".education-entry:last").append(formattedHTMLonlineURL);
-                }
-            }
         }
     }
 };
 
 education.display();
+
+education.displayOnline = function() {
+    $("#education").append(HTMLonlineClasses);
+    for (var course in education.onlineCourses) {
+        if (education.onlineCourses.length > 0) {
+            // create new div for school history
+            $("#education").append(HTMLschoolStart);
+            // concat employer and title
+            var formattedHTMLonlineTitle = HTMLonlineTitle.replace(data, education.onlineCourses[course].title).replace("#", education.onlineCourses[course].url);
+            var formattedHTMLonlineSchool = HTMLonlineSchool.replace(data, education.onlineCourses[course].school);
+            var formattedTitleAndSchool = formattedHTMLonlineTitle.concat(formattedHTMLonlineSchool);
+            $(".education-entry:last").prepend(formattedTitleAndSchool);
+            var formattedHTMLonlineDates = HTMLonlineDates.replace(data, education.onlineCourses[course].dates);
+            $(".education-entry:last").append(formattedHTMLonlineDates);
+            var formattedHTMLonlineURL = HTMLonlineURL.replace(data, education.onlineCourses[course].url).replace("#", education.onlineCourses[course].url);
+            $(".education-entry:last").append(formattedHTMLonlineURL);
+        }
+    }
+};
+
+education.displayOnline();
 
 $("#mapDiv").append(googleMap);
